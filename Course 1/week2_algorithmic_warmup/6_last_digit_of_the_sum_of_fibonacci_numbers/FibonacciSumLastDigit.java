@@ -18,12 +18,33 @@ public class FibonacciSumLastDigit {
 
         return sum % 10;
     }
+
+    private static long getFibonacciSumFast(long n){
+        if(n<=1)
+            return n;
+        long rem=(n+2)%60;
+        
+        long f1=0;
+        long f2=1;
+        long f=1;
+    
+        for(int i=0;i<rem-1;i++){
+            f=(f1+f2)%10;
+            f1=f2;
+            f2=f;
+        }
+        if(f==0)
+            return 9;
+        return f-1;
+    }
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long n = scanner.nextLong();
-        long s = getFibonacciSumNaive(n);
-        System.out.println(s);
+        // long s = getFibonacciSumNaive(n);
+        // System.out.println(s);
+        System.out.println(getFibonacciSumFast(n));
+
     }
 }
 
