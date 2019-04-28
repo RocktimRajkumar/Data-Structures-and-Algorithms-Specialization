@@ -13,12 +13,21 @@ public class GCD {
 
     return current_gcd;
   }
+  
+  private static int gcd_fast(int a,int b){
+	  if(b==0)
+		  return a;
+	  int temp=a%b;
+	  return gcd_fast(b,temp);
+  }
 
   public static void main(String args[]) {
     Scanner scanner = new Scanner(System.in);
     int a = scanner.nextInt();
     int b = scanner.nextInt();
-
-    System.out.println(gcd_naive(a, b));
+	
+	System.out.println(gcd_fast(a,b));
+    //System.out.println(gcd_naive(a, b));
   }
 }
+
