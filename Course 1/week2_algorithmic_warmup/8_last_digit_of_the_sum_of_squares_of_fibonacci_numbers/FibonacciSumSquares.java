@@ -19,11 +19,30 @@ public class FibonacciSumSquares {
         return sum % 10;
     }
     
+    private static long getFibonacciSumSquaresFirst(long n){
+        if(n<=1)
+            return n;
+        long rem=(n)%60;
+        if(rem==0)
+            return 0;
+        long previous=0;
+        long current=1;
+        long sum=1;
+        for(long i=0;i<rem-1;i++){
+            long tmp_previous = previous;
+            previous = current;
+            current = (tmp_previous + current)%10;
+            sum=(sum+(current*current))%10;
+        }
+        return sum;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         long n = scanner.nextLong();
-        long s = getFibonacciSumSquaresNaive(n);
-        System.out.println(s);
+        // long s = getFibonacciSumSquaresNaive(n);
+        // System.out.println(s);
+        System.out.println(getFibonacciSumSquaresFirst(n));
     }
 }
 
